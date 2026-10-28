@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hidrovoret — Regjistri i aseteve — IDMIS</title>
+<meta name="description" content="Regjistri i digave, stacioneve të pompimit, rezervuarëve dhe makinerive të ujitjes dhe kullimit në pronësi të bashkive.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>try{(function(d,s){d.classList.add("is-loading");if((s.getItem("idms-lang")||"sq")!=="sq"){d.classList.add("i18n-wait");setTimeout(function(){d.classList.remove("i18n-wait")},1500)}})(document.documentElement,localStorage)}catch(e){}</script>
+<script>try{(function(d){var f=JSON.parse(sessionStorage.getItem("idms-ms-from"));if(f&&f.to===location.pathname)d.classList.add("ms-from")})(document.documentElement)}catch(e){}</script>
+<link rel="expect" href="#msReady" blocking="render">
+<link rel="stylesheet" href="../../css/style.css?v=149">
+</head>
+<body>
+
+<a class="skip-link" href="#main" data-i18n="skip">Kalo te përmbajtja</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a class="brand" href="../../index.html" aria-label="IDMIS">
+      <strong class="brand-text">IDMIS</strong>
+      <span class="brand-sub">
+        <span data-i18n="brandSub1">Irrigation &amp; Drainage</span>
+        <span data-i18n="brandSub2">Management Information System</span>
+      </span>
+    </a>
+
+    <div class="partner-logos">
+      <span class="partner-logo partner-crad">
+        <img src="../../assets/logo-crad.png" alt="CRAD — Climate Resilience and Agriculture Development in Albania" width="181" height="180">
+      </span>
+      <a class="ministry-logo" href="https://bujqesia.gov.al" target="_blank" rel="noopener">
+        <img src="../../assets/logo-ministria.jpg" alt="Ministria e Bujqësisë dhe Zhvillimit Rural" width="240" height="184">
+      </a>
+      <a class="partner-logo partner-wb" href="https://www.worldbank.org" target="_blank" rel="noopener">
+        <img src="../../assets/logo-worldbank.png" alt="The World Bank — IBRD · IDA" width="454" height="90">
+      </a>
+    </div>
+
+    <div class="header-actions">
+      <a class="btn btn-sm btn-outline" href="../Portal.html" data-i18n="navBack">Shërbimet</a>
+      <a class="btn btn-sm btn-primary" href="https://idmis.gis.al/public/map" target="_blank" rel="noopener" data-i18n="navMap">Harta publike</a>
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Change language">
+        <span class="lang-opt is-active" data-lang="sq">SQ</span>
+        <span class="lang-sep">/</span>
+        <span class="lang-opt" data-lang="en">EN</span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+
+<main id="main" class="page ms-page">
+  <div class="ms-shell">
+
+    <aside class="ms-side" id="msSide" aria-label="Paneli i administrimit">
+
+      <nav class="ms-nav">
+        <p class="ms-title" data-i18n="astStatHidrovor">Hidrovoret</p>
+        <a class="ms-link" href="skemat-ujitese.html"><span class="ms-link-text" data-i18n="astStatSkema">Skemat ujitëse</span></a>
+        <a class="ms-link" href="diga.html"><span class="ms-link-text" data-i18n="astStatDige">Diga</span></a>
+        <a class="ms-link" href="stacione-pompimi.html"><span class="ms-link-text" data-i18n="astStatStacion">Stacione pompimi</span></a>
+        <a class="ms-link is-active" href="hidrovoret.html" aria-current="page"><span class="ms-link-text" data-i18n="astStatHidrovor">Hidrovoret</span></a>
+        <a class="ms-link" href="rezervuare.html"><span class="ms-link-text" data-i18n="astStatRezervuar">Rezervuarë</span></a>
+        <a class="ms-link" href="makineri.html"><span class="ms-link-text" data-i18n="astStatMakineri">Makineri</span></a>
+        <a class="ms-link" href="asetet.html"><span class="ms-link-text" data-i18n="astStatAsetet">Asetet</span></a>
+        <a class="ms-link" href="stafi.html"><span class="ms-link-text" data-i18n="astStatStafi">Stafi</span></a>
+      </nav>
+
+      <div class="ms-profile">
+        <span class="ms-avatar" aria-hidden="true">A</span>
+        <span class="ms-user-info">
+          <span class="ms-user" data-i18n="astUserName">Administratori</span>
+          <span class="ms-role" data-i18n="astRole">Ujitje &amp; Kullim</span>
+        </span>
+      </div>
+    </aside>
+
+    <div class="ms-main">
+
+      <section class="ms-view">
+        <h1 class="sr-only" data-i18n="astStatHidrovor">Hidrovoret</h1>
+        <nav class="ms-toolbar" aria-label="Veprimet">
+          <a class="ms-tool" href="#shto" data-view-link="shto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg><span data-i18n="astActAdd">Shto</span></a>
+          <a class="ms-tool" href="#perditeso" data-view-link="perditeso"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5z"/><path d="m15 5 4 4"/></svg><span data-i18n="astActUpdate">Përditëso</span></a>
+          <a class="ms-tool" href="#harta" data-view-link="harta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.1 6.3a2 2 0 0 0 1.8 0l3.6-1.8A1 1 0 0 1 21 5.4v12.9a1 1 0 0 1-.55.9l-4.55 2.3a2 2 0 0 1-1.8 0l-4.2-2.1a2 2 0 0 0-1.8 0l-3.6 1.8A1 1 0 0 1 3 20.3V7.4a1 1 0 0 1 .55-.9l4.55-2.3a2 2 0 0 1 1.8 0z"/><path d="M15 5.76v15"/><path d="M9 3.24v15"/></svg><span data-i18n="astActMap">Shiko në hartë</span></a>
+          <label class="ms-muni ms-filter" for="hvDrejtoria">
+            <span class="ms-muni-lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="hvDrejtoriaShort">Drejtoria</span></span>
+            <span class="ms-filter-box"><select id="hvDrejtoria" class="ms-muni-btn"><option value="" data-i18n="hvAllDrejtori">Të gjitha drejtoritë</option></select><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+          </label>
+          <button type="button" class="ms-save" id="msSave" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"/><path d="M7 3v4a1 1 0 0 0 1 1h7"/></svg><span data-sk-save-label>Ruaj</span><span class="ms-save-n" data-sk-save-n></span></button>
+        </nav>
+
+        <section class="sk-inv" id="hvInv"></section>
+
+        <section class="ms-pane" data-view="lista" aria-label="Hidrovoret"></section>
+        <section class="ms-pane" data-view="shto" aria-label="Shto" hidden></section>
+        <section class="ms-pane" data-view="perditeso" aria-label="Përditëso" hidden></section>
+        <section class="ms-pane" data-view="harta" aria-label="Shiko në hartë" hidden></section>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<button class="to-top" id="toTop" type="button" data-i18n-title="toTop" title="Kthehu lart" hidden>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5"/><path d="M5 12l7-7 7 7"/>
+  </svg>
+  <span class="sr-only" data-i18n="toTop">Kthehu lart</span>
+</button>
+
+<script src="../../js/hidrovoret-data.js?v=1"></script>
+<script src="../../js/main.js?v=103"></script>
+<i id="msReady" hidden></i>
+</body>
+</html>

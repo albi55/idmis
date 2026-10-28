@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Makineri — Regjistri i aseteve — IDMIS</title>
+<meta name="description" content="Regjistri i digave, stacioneve të pompimit, rezervuarëve dhe makinerive të ujitjes dhe kullimit në pronësi të bashkive.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>try{(function(d,s){d.classList.add("is-loading");if((s.getItem("idms-lang")||"sq")!=="sq"){d.classList.add("i18n-wait");setTimeout(function(){d.classList.remove("i18n-wait")},1500)}})(document.documentElement,localStorage)}catch(e){}</script>
+<script>try{(function(d){var f=JSON.parse(sessionStorage.getItem("idms-ms-from"));if(f&&f.to===location.pathname)d.classList.add("ms-from")})(document.documentElement)}catch(e){}</script>
+<link rel="expect" href="#msReady" blocking="render">
+<link rel="stylesheet" href="../../css/style.css?v=149">
+</head>
+<body>
+
+<a class="skip-link" href="#main" data-i18n="skip">Kalo te përmbajtja</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a class="brand" href="../../index.html" aria-label="IDMIS">
+      <strong class="brand-text">IDMIS</strong>
+      <span class="brand-sub">
+        <span data-i18n="brandSub1">Irrigation &amp; Drainage</span>
+        <span data-i18n="brandSub2">Management Information System</span>
+      </span>
+    </a>
+
+    <div class="partner-logos">
+      <span class="partner-logo partner-crad">
+        <img src="../../assets/logo-crad.png" alt="CRAD — Climate Resilience and Agriculture Development in Albania" width="181" height="180">
+      </span>
+      <a class="ministry-logo" href="https://bujqesia.gov.al" target="_blank" rel="noopener">
+        <img src="../../assets/logo-ministria.jpg" alt="Ministria e Bujqësisë dhe Zhvillimit Rural" width="240" height="184">
+      </a>
+      <a class="partner-logo partner-wb" href="https://www.worldbank.org" target="_blank" rel="noopener">
+        <img src="../../assets/logo-worldbank.png" alt="The World Bank — IBRD · IDA" width="454" height="90">
+      </a>
+    </div>
+
+    <div class="header-actions">
+      <a class="btn btn-sm btn-outline" href="../Portal.html" data-i18n="navBack">Shërbimet</a>
+      <a class="btn btn-sm btn-primary" href="https://idmis.gis.al/public/map" target="_blank" rel="noopener" data-i18n="navMap">Harta publike</a>
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Change language">
+        <span class="lang-opt is-active" data-lang="sq">SQ</span>
+        <span class="lang-sep">/</span>
+        <span class="lang-opt" data-lang="en">EN</span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+
+<main id="main" class="page ms-page">
+  <div class="ms-shell">
+
+    <aside class="ms-side" id="msSide" aria-label="Paneli i administrimit">
+
+      <nav class="ms-nav">
+        <p class="ms-title" data-i18n="astStatMakineri">Makineri</p>
+        <a class="ms-link" href="skemat-ujitese.html"><span class="ms-link-text" data-i18n="astStatSkema">Skemat ujitëse</span></a>
+        <a class="ms-link" href="diga.html"><span class="ms-link-text" data-i18n="astStatDige">Diga</span></a>
+        <a class="ms-link" href="stacione-pompimi.html"><span class="ms-link-text" data-i18n="astStatStacion">Stacione pompimi</span></a>
+        <a class="ms-link" href="hidrovoret.html"><span class="ms-link-text" data-i18n="astStatHidrovor">Hidrovoret</span></a>
+        <a class="ms-link" href="rezervuare.html"><span class="ms-link-text" data-i18n="astStatRezervuar">Rezervuarë</span></a>
+        <a class="ms-link is-active" href="makineri.html" aria-current="page"><span class="ms-link-text" data-i18n="astStatMakineri">Makineri</span></a>
+        <a class="ms-link" href="asetet.html"><span class="ms-link-text" data-i18n="astStatAsetet">Asetet</span></a>
+        <a class="ms-link" href="stafi.html"><span class="ms-link-text" data-i18n="astStatStafi">Stafi</span></a>
+      </nav>
+
+      <div class="ms-profile">
+        <span class="ms-avatar" aria-hidden="true">A</span>
+        <span class="ms-user-info">
+          <span class="ms-user" data-i18n="astUserName">Administratori</span>
+          <span class="ms-role" data-i18n="astRole">Ujitje &amp; Kullim</span>
+        </span>
+      </div>
+    </aside>
+
+    <div class="ms-main">
+
+      <section class="ms-view">
+        <h1 class="sr-only" data-i18n="astStatMakineri">Makineri</h1>
+        <div class="ms-toolbar" aria-hidden="true"></div>
+        <div class="empty-state">
+          <p class="empty-state-step" data-i18n="astTitle">Regjistri i aseteve të U&amp;K</p>
+          <h2 class="empty-state-title" data-i18n="ovNoData">Nuk ka ende të dhëna</h2>
+          <p class="empty-state-text" data-i18n="emptyMakineri">Këtu do të shfaqen makineritë dhe mjetet e mirëmbajtjes në pronësi të bashkisë, sapo të regjistrohen.</p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<button class="to-top" id="toTop" type="button" data-i18n-title="toTop" title="Kthehu lart" hidden>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5"/><path d="M5 12l7-7 7 7"/>
+  </svg>
+  <span class="sr-only" data-i18n="toTop">Kthehu lart</span>
+</button>
+
+<script src="../../js/main.js?v=103"></script>
+<i id="msReady" hidden></i>
+</body>
+</html>

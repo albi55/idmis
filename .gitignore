@@ -1,0 +1,17 @@
+backend/.env
+backend/.env.*
+backend/PERDORUESIT_TEST.txt
+.env
+
+backup-me-komente-*/
+
+node_modules/
+
+*.exe
+*.zip
+
+.vscode/
+desktop.ini
+Thumbs.db
+~$*
+*.log

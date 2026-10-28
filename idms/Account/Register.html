@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Krijo llogari — IDMIS</title>
+<meta name="description" content="Regjistrim në Sistemin e Informacionit për Menaxhimin e Ujitjes dhe Kullimit.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>try{(function(d,s){d.classList.add("is-loading");if((s.getItem("idms-lang")||"sq")!=="sq"){d.classList.add("i18n-wait");setTimeout(function(){d.classList.remove("i18n-wait")},1500)}})(document.documentElement,localStorage)}catch(e){}</script>
+<link rel="stylesheet" href="../css/style.css?v=149">
+</head>
+<body class="auth-body">
+
+<a class="skip-link" href="#authMain" data-i18n="skip">Kalo te përmbajtja</a>
+
+<main class="auth" id="authMain">
+
+  <aside class="auth-aside">
+    <a class="brand" href="../index.html" aria-label="IDMIS">
+      <strong class="brand-text">IDMIS</strong>
+      <span class="brand-sub">
+        <span data-i18n="brandSub1">Irrigation &amp; Drainage</span>
+        <span data-i18n="brandSub2">Management Information System</span>
+      </span>
+    </a>
+
+    <div class="auth-aside-body">
+      <h2 class="auth-aside-title" data-i18n="asideTitleReg">Regjistrohu për akses institucional</h2>
+      <ul class="auth-perks">
+        <li data-i18n="perkR1">Llogaritë verifikohen nga njësia përgjegjëse</li>
+        <li data-i18n="perkR2">Roli fillestar: Vëzhgues, me akses në shtresat bazë</li>
+        <li data-i18n="perkR3">Ngritje e roleve nga administratori i sistemit</li>
+      </ul>
+    </div>
+
+    <p class="auth-aside-foot" data-i18n="asideFoot">Ministria e Bujqësisë dhe Zhvillimit Rural</p>
+  </aside>
+
+  <section class="auth-panel" aria-labelledby="regTitle">
+    <div class="auth-card auth-card-wide">
+
+      <a class="auth-back" href="../index.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M19 12H5"/><path d="m12 19-7-7 7-7"/>
+        </svg>
+        <span data-i18n="authBack">Kthehu te faqja kryesore</span>
+      </a>
+
+      <h1 class="auth-title" id="regTitle" data-i18n="regTitle">Krijo llogari</h1>
+      <p class="auth-note" data-i18n="regNote">Llogaritë e reja marrin rolin “Vëzhgues”.</p>
+
+      <form class="form" novalidate>
+        <div class="field">
+          <label for="UserName" data-i18n="fldUsername">Përdoruesi</label>
+          <input id="UserName" name="UserName" type="text" autocomplete="username" required autofocus>
+        </div>
+
+        <div class="field">
+          <label for="Email" data-i18n="fldEmail">Email</label>
+          <input id="Email" name="Email" type="email" autocomplete="email" required>
+        </div>
+
+        <div class="field">
+          <label for="FullName" data-i18n="fldFullName">Emri i plotë</label>
+          <input id="FullName" name="FullName" type="text" autocomplete="name" required>
+        </div>
+
+        <div class="field">
+          <label for="Organization" data-i18n="fldOrg">Organizata / Bashkia</label>
+          <input id="Organization" name="Organization" type="text" autocomplete="organization" required>
+        </div>
+
+        <div class="field">
+          <label for="Password" data-i18n="fldPass">Fjalëkalimi</label>
+          <div class="input-wrap">
+            <input id="Password" name="Password" type="password" autocomplete="new-password" required minlength="8"
+                   aria-describedby="passHint">
+            <button class="pass-toggle" type="button" data-toggle-pass="Password" aria-label="Shfaq fjalëkalimin">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+          <span class="field-hint" id="passHint" data-i18n="fldPassHint">Të paktën 8 karaktere, me një shkronjë të madhe, një të vogël, një shifër dhe një simbol.</span>
+        </div>
+
+        <div class="field">
+          <label for="ConfirmPassword" data-i18n="fldConfirm">Konfirmo fjalëkalimin</label>
+          <div class="input-wrap">
+            <input id="ConfirmPassword" name="ConfirmPassword" type="password" autocomplete="new-password" required>
+            <button class="pass-toggle" type="button" data-toggle-pass="ConfirmPassword" aria-label="Shfaq fjalëkalimin">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-block" type="submit" data-i18n="regSubmit">Krijo llogarinë</button>
+      </form>
+
+      <p class="auth-alt">
+        <span data-i18n="regAlt">Keni llogari?</span>
+        <a href="Login.html" data-i18n="navLogin">Hyr</a>
+      </p>
+
+    </div>
+
+    <p class="auth-legal">
+      <a href="#" data-i18n="footPrivacy">Politika e privatësisë</a>
+    </p>
+  </section>
+
+</main>
+
+<script src="../js/main.js?v=103"></script>
+</body>
+</html>

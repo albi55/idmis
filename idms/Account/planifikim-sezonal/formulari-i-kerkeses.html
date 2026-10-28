@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulari i kërkesës — Planifikim sezonal — IDMIS</title>
+<meta name="description" content="Formulari standard për regjistrimin e nevojave për ujitje të kulturave bujqësore: draft, dorëzim, verifikim dhe miratim.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>try{(function(d,s){d.classList.add("is-loading");if((s.getItem("idms-lang")||"sq")!=="sq"){d.classList.add("i18n-wait");setTimeout(function(){d.classList.remove("i18n-wait")},1500)}})(document.documentElement,localStorage)}catch(e){}</script>
+<script>try{(function(d){var f=JSON.parse(sessionStorage.getItem("idms-ms-from"));if(f&&f.to===location.pathname)d.classList.add("ms-from")})(document.documentElement)}catch(e){}</script>
+<link rel="expect" href="#msReady" blocking="render">
+<link rel="stylesheet" href="../../css/style.css?v=149">
+</head>
+<body>
+
+<a class="skip-link" href="#main" data-i18n="skip">Kalo te përmbajtja</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a class="brand" href="../../index.html" aria-label="IDMIS">
+      <strong class="brand-text">IDMIS</strong>
+      <span class="brand-sub">
+        <span data-i18n="brandSub1">Irrigation &amp; Drainage</span>
+        <span data-i18n="brandSub2">Management Information System</span>
+      </span>
+    </a>
+
+    <div class="partner-logos">
+      <span class="partner-logo partner-crad">
+        <img src="../../assets/logo-crad.png" alt="CRAD — Climate Resilience and Agriculture Development in Albania" width="181" height="180">
+      </span>
+      <a class="ministry-logo" href="https://bujqesia.gov.al" target="_blank" rel="noopener">
+        <img src="../../assets/logo-ministria.jpg" alt="Ministria e Bujqësisë dhe Zhvillimit Rural" width="240" height="184">
+      </a>
+      <a class="partner-logo partner-wb" href="https://www.worldbank.org" target="_blank" rel="noopener">
+        <img src="../../assets/logo-worldbank.png" alt="The World Bank — IBRD · IDA" width="454" height="90">
+      </a>
+    </div>
+
+    <div class="header-actions">
+      <a class="btn btn-sm btn-outline" href="../Portal.html" data-i18n="navBack">Shërbimet</a>
+      <a class="btn btn-sm btn-primary" href="https://idmis.gis.al/public/map" target="_blank" rel="noopener" data-i18n="navMap">Harta publike</a>
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Change language">
+        <span class="lang-opt is-active" data-lang="sq">SQ</span>
+        <span class="lang-sep">/</span>
+        <span class="lang-opt" data-lang="en">EN</span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+
+<main id="main" class="page ms-page">
+  <div class="ms-shell">
+
+    <aside class="ms-side" id="msSide" aria-label="Paneli i administrimit">
+
+      <nav class="ms-nav">
+        <p class="ms-title" data-i18n="kfNav">Formulari i kërkesës</p>
+        <p class="ms-nav-label" data-i18n="nvPanelPlan">Planifikim sezonal</p>
+        <a class="ms-link" href="nevoja-e-ujit.html"><span class="ms-link-text" data-i18n="nvTitle">Nevoja e ujit për ujitje</span></a>
+        <a class="ms-link is-active" href="formulari-i-kerkeses.html" aria-current="page"><span class="ms-link-text" data-i18n="kfNav">Formulari i kërkesës</span></a>
+      </nav>
+
+      <div class="ms-profile">
+        <span class="ms-avatar" aria-hidden="true">A</span>
+        <span class="ms-user-info">
+          <span class="ms-user" data-i18n="astUserName">Administratori</span>
+          <span class="ms-role" data-i18n="astRole">Ujitje &amp; Kullim</span>
+        </span>
+      </div>
+    </aside>
+
+    <div class="ms-main">
+
+      <section class="ms-view">
+        <h1 class="sr-only" data-i18n="kfTitle">Formulari i kërkesës për ujitje</h1>
+        <nav class="ms-toolbar" aria-label="Veprimet">
+          <a class="ms-tool" href="#lista" data-kf-nav="lista"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h.01"/><path d="M3 12h.01"/><path d="M3 19h.01"/><path d="M8 5h13"/><path d="M8 12h13"/><path d="M8 19h13"/></svg><span data-i18n="kfList">Lista e kërkesave</span></a>
+          <a class="ms-tool" href="#e-re" data-kf-nav="e-re"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg><span data-i18n="kfNew">Kërkesë e re</span></a>
+          <div class="ms-muni ms-filter kf-toolbar-filters" id="kfToolFilters" role="search">
+            <span class="ms-filter-box"><select id="kfStatus" class="ms-muni-btn" data-i18n-title="kfColStatus" title="Statusi" aria-label="Statusi"></select><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+            <span class="ms-filter-box kf-search-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input type="search" id="kfSearch" class="ms-muni-btn" placeholder="Kërko sipas nr., parcelës, fermerit ose kulturës…" aria-label="Kërko sipas nr., parcelës, fermerit ose kulturës…" autocomplete="off"></span>
+          </div>
+        </nav>
+
+        <section class="kf" id="kfRoot"></section>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<button class="to-top" id="toTop" type="button" data-i18n-title="toTop" title="Kthehu lart" hidden>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5"/><path d="M5 12l7-7 7 7"/>
+  </svg>
+  <span class="sr-only" data-i18n="toTop">Kthehu lart</span>
+</button>
+
+<script src="../../js/nevoja-ujit-data.js?v=5"></script>
+<script src="../../js/skemat-ujitese-data.js?v=14"></script>
+<script src="../../js/main.js?v=103"></script>
+<i id="msReady" hidden></i>
+</body>
+</html>

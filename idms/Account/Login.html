@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hyr në sistem — IDMIS</title>
+<meta name="description" content="Hyrje në Sistemin e Informacionit për Menaxhimin e Ujitjes dhe Kullimit.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>try{(function(d,s){d.classList.add("is-loading");if((s.getItem("idms-lang")||"sq")!=="sq"){d.classList.add("i18n-wait");setTimeout(function(){d.classList.remove("i18n-wait")},1500)}})(document.documentElement,localStorage)}catch(e){}</script>
+<link rel="stylesheet" href="../css/style.css?v=149">
+</head>
+<body class="auth-body">
+
+<a class="skip-link" href="#authMain" data-i18n="skip">Kalo te përmbajtja</a>
+
+<main class="auth" id="authMain">
+
+  <aside class="auth-aside">
+    <a class="brand" href="../index.html" aria-label="IDMIS">
+      <strong class="brand-text">IDMIS</strong>
+      <span class="brand-sub">
+        <span data-i18n="brandSub1">Irrigation &amp; Drainage</span>
+        <span data-i18n="brandSub2">Management Information System</span>
+      </span>
+    </a>
+
+    <div class="auth-aside-body">
+      <h2 class="auth-aside-title" data-i18n="asideTitle">Akses i plotë në të dhënat e rrjetit</h2>
+      <ul class="auth-perks">
+        <li data-i18n="perk1">Shfletuesi i plotë WebGIS me pemën e shtresave</li>
+        <li data-i18n="perk2">Raportet e mirëmbajtjes dhe ndërhyrjeve</li>
+        <li data-i18n="perk3">Të dhëna sipas bashkisë dhe skemës ujitëse</li>
+      </ul>
+    </div>
+
+    <p class="auth-aside-foot" data-i18n="asideFoot">Ministria e Bujqësisë dhe Zhvillimit Rural</p>
+  </aside>
+
+  <section class="auth-panel" aria-labelledby="loginTitle">
+    <div class="auth-card">
+
+      <a class="auth-back" href="../index.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M19 12H5"/><path d="m12 19-7-7 7-7"/>
+        </svg>
+        <span data-i18n="authBack">Kthehu te faqja kryesore</span>
+      </a>
+
+      <h1 class="auth-title" id="loginTitle" data-i18n="loginTitle">Hyr në sistem</h1>
+      <p class="auth-note" data-i18n="loginNote">Përdorni kredencialet e llogarisë suaj institucionale.</p>
+
+      <form class="form" novalidate>
+        <div class="field">
+          <label for="UserNameOrEmail" data-i18n="fldUser">Përdoruesi ose email</label>
+          <input id="UserNameOrEmail" name="UserNameOrEmail" type="text" autocomplete="username" required autofocus>
+        </div>
+
+        <div class="field">
+          <div class="field-label-row">
+            <label for="Password" data-i18n="fldPass">Fjalëkalimi</label>
+            <a class="link-quiet" href="#" data-i18n="loginForgot">Keni harruar fjalëkalimin?</a>
+          </div>
+          <div class="input-wrap">
+            <input id="Password" name="Password" type="password" autocomplete="current-password" required>
+            <button class="pass-toggle" type="button" data-toggle-pass="Password" aria-label="Shfaq fjalëkalimin">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <label class="check">
+          <input id="RememberMe" type="checkbox" name="RememberMe">
+          <span data-i18n="fldRemember">Më mbaj mend</span>
+        </label>
+
+        <button class="btn btn-primary btn-block" type="submit" data-i18n="loginSubmit">Hyr</button>
+      </form>
+
+      <p class="auth-alt">
+        <span data-i18n="loginAlt">Nuk keni llogari?</span>
+        <a href="Register.html" data-i18n="navRegister">Regjistrohu</a>
+      </p>
+
+    </div>
+
+    <p class="auth-legal">
+      <a href="#" data-i18n="footPrivacy">Politika e privatësisë</a>
+    </p>
+  </section>
+
+</main>
+
+<script src="../js/main.js?v=103"></script>
+</body>
+</html>

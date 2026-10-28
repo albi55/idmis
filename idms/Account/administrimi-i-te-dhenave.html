@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="sq" class="has-subnav subnav-slim">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administrimi dhe mirëmbajtja e të dhënave — IDMIS</title>
+<meta name="description" content="Raporte mbi administrimin dhe mirëmbajtjen e të dhënave të ujitjes dhe kullimit.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>try{(function(d,s){d.classList.add("is-loading");if((s.getItem("idms-lang")||"sq")!=="sq"){d.classList.add("i18n-wait");setTimeout(function(){d.classList.remove("i18n-wait")},1500)}})(document.documentElement,localStorage)}catch(e){}</script>
+<link rel="stylesheet" href="../css/style.css?v=149">
+</head>
+<body>
+
+<a class="skip-link" href="#main" data-i18n="skip">Kalo te përmbajtja</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a class="brand" href="../index.html" aria-label="IDMIS">
+      <strong class="brand-text">IDMIS</strong>
+      <span class="brand-sub">
+        <span data-i18n="brandSub1">Irrigation &amp; Drainage</span>
+        <span data-i18n="brandSub2">Management Information System</span>
+      </span>
+    </a>
+
+    <div class="partner-logos">
+      <span class="partner-logo partner-crad">
+        <img src="../assets/logo-crad.png" alt="CRAD — Climate Resilience and Agriculture Development in Albania" width="181" height="180">
+      </span>
+      <a class="ministry-logo" href="https://bujqesia.gov.al" target="_blank" rel="noopener">
+        <img src="../assets/logo-ministria.jpg" alt="Ministria e Bujqësisë dhe Zhvillimit Rural" width="240" height="184">
+      </a>
+      <a class="partner-logo partner-wb" href="https://www.worldbank.org" target="_blank" rel="noopener">
+        <img src="../assets/logo-worldbank.png" alt="The World Bank — IBRD · IDA" width="454" height="90">
+      </a>
+    </div>
+
+    <div class="header-actions">
+      <a class="btn btn-sm btn-outline" href="Portal.html" data-i18n="navBack">Shërbimet</a>
+      <a class="btn btn-sm btn-primary" href="https://idmis.gis.al/public/map" target="_blank" rel="noopener" data-i18n="navMap">Harta publike</a>
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Change language">
+        <span class="lang-opt is-active" data-lang="sq">SQ</span>
+        <span class="lang-sep">/</span>
+        <span class="lang-opt" data-lang="en">EN</span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<nav class="subnav" aria-label="Shërbimet">
+  <div class="container subnav-list subnav-list-links">
+    <a class="subnav-link is-underlined" href="#vleresimi-gis" data-view-link="vleresimi-gis" aria-current="page"><span data-i18n="navGisReview">Vlerësimi dhe publikimi i informacioneve GIS</span></a>
+    <a class="subnav-link is-underlined" href="#perditesimi" data-view-link="perditesimi"><span data-i18n="navDataUpdate">Përditësimi i të dhënave</span></a>
+  </div>
+</nav>
+
+<main id="main" class="page">
+
+  <section class="doc-sec" data-view="vleresimi-gis">
+    <div class="container">
+
+      <h1 class="sr-only" data-i18n="navGisReview">Vlerësimi dhe publikimi i informacioneve GIS</h1>
+
+      <div class="doc-tabs" role="tablist" aria-label="Statusi i të dhënave">
+        <button class="doc-tab" type="button" role="tab" id="tab-field" aria-controls="pnl-field" aria-selected="true">
+          <span data-i18n="docTabField">Të dhëna nga terreni</span>
+        </button>
+        <button class="doc-tab" type="button" role="tab" id="tab-review" aria-controls="pnl-review" aria-selected="false" tabindex="-1">
+          <span data-i18n="docTabReview">Në vlerësim</span>
+        </button>
+        <button class="doc-tab" type="button" role="tab" id="tab-approved" aria-controls="pnl-approved" aria-selected="false" tabindex="-1">
+          <span data-i18n="docTabApproved">Të miratuara</span>
+        </button>
+        <button class="doc-tab" type="button" role="tab" id="tab-published" aria-controls="pnl-published" aria-selected="false" tabindex="-1">
+          <span data-i18n="docTabPublished">Të publikuara</span>
+        </button>
+      </div>
+
+      <figure class="flow" id="docFlow" data-active="0">
+        <div class="flow-art">
+          <svg class="flow-svg" viewBox="40 50 910 580" aria-hidden="true" focusable="false">
+            <path class="flow-arrow" d="M55 613C200 330 450 160 800 130L793 63 938 173 823 338 805 265C500 290 250 380 55 613Z"/>
+            <circle class="flow-dot" data-step="0" cx="152" cy="484" r="11"/>
+            <circle class="flow-dot" data-step="1" cx="303" cy="363" r="17"/>
+            <circle class="flow-dot" data-step="2" cx="492" cy="274" r="23"/>
+            <circle class="flow-dot" data-step="3" cx="701" cy="219" r="31"/>
+          </svg>
+          <ol class="flow-steps">
+            <li class="flow-step" data-step="0" style="--x:13.4%;--y:73.6%;--w:17%"><span data-i18n="flowStep1">Të dhënat e mbledhura nga terreni (ruhen në një DB provizore)</span></li>
+            <li class="flow-step" data-step="1" style="--x:30.8%;--y:52.6%;--w:19%"><span data-i18n="flowStep2">Të dhënat vlerësohen nga ekspertët në Bashki</span></li>
+            <li class="flow-step" data-step="2" style="--x:52.2%;--y:37.8%;--w:21%"><span data-i18n="flowStep3">Pas vlerësimit/korrigjimit të mundshëm aprovohen nga eksperti</span></li>
+            <li class="flow-step" data-step="3" style="--x:76%;--y:28.2%;--w:21%"><span data-i18n="flowStep4">Përfundimisht të dhënat publikohen në DB dhe janë të aksesueshme</span></li>
+          </ol>
+        </div>
+      </figure>
+
+      <div class="doc-panel" role="tabpanel" id="pnl-field" aria-labelledby="tab-field" tabindex="0">
+        <div class="empty-state">
+          <p class="empty-state-step" data-i18n="emptyStep1">Hapi 1 nga 4</p>
+          <h2 class="empty-state-title" data-i18n="ovNoData">Nuk ka ende të dhëna</h2>
+          <p class="empty-state-text" data-i18n="emptyField">Këtu shfaqen të dhënat e mbledhura në terren. Ato ruhen përkohësisht derisa të kalojnë për vlerësim.</p>
+        </div>
+      </div>
+      <div class="doc-panel" role="tabpanel" id="pnl-review" aria-labelledby="tab-review" tabindex="0" hidden>
+        <div class="empty-state">
+          <p class="empty-state-step" data-i18n="emptyStep2">Hapi 2 nga 4</p>
+          <h2 class="empty-state-title" data-i18n="ovNoData">Nuk ka ende të dhëna</h2>
+          <p class="empty-state-text" data-i18n="emptyReview">Këtu shfaqen të dhënat që ekspertët e bashkisë po i vlerësojnë dhe, nëse duhet, i korrigjojnë.</p>
+        </div>
+      </div>
+      <div class="doc-panel" role="tabpanel" id="pnl-approved" aria-labelledby="tab-approved" tabindex="0" hidden>
+        <div class="empty-state">
+          <p class="empty-state-step" data-i18n="emptyStep3">Hapi 3 nga 4</p>
+          <h2 class="empty-state-title" data-i18n="ovNoData">Nuk ka ende të dhëna</h2>
+          <p class="empty-state-text" data-i18n="emptyApproved">Këtu shfaqen të dhënat e aprovuara nga eksperti pas vlerësimit, gati për t’u publikuar.</p>
+        </div>
+      </div>
+      <div class="doc-panel" role="tabpanel" id="pnl-published" aria-labelledby="tab-published" tabindex="0" hidden>
+        <div class="empty-state">
+          <p class="empty-state-step" data-i18n="emptyStep4">Hapi 4 nga 4</p>
+          <h2 class="empty-state-title" data-i18n="ovNoData">Nuk ka ende të dhëna</h2>
+          <p class="empty-state-text" data-i18n="emptyPublished">Këtu shfaqen të dhënat e publikuara në bazën e të dhënave, të aksesueshme për përdoruesit.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="doc-sec" data-view="perditesimi" hidden>
+    <div class="container">
+
+      <h1 class="sr-only" data-i18n="navDataUpdate">Përditësimi i të dhënave</h1>
+
+      <form class="form tar-form" id="tarForm" novalidate>
+        <div class="tar-form-head">
+          <h2 class="tar-form-title" data-i18n="tarTitle">Tarifat e ujitjes dhe kullimit</h2>
+          <p class="tar-form-intro" data-i18n="frmIntro">Zgjidhni bashkinë dhe plotësoni tarifat. Fushat bosh mbeten të papërcaktuara.</p>
+        </div>
+
+        <div class="field field-muni-pick">
+          <label for="tarFormMuni"><span data-i18n="tblMuni">Bashkia</span> <span class="req" aria-hidden="true">*</span></label>
+          <select id="tarFormMuni" name="bashkia" required aria-describedby="tarFormMuni-err">
+            <option value="" data-i18n="frmMuniPh">Zgjidhni bashkinë…</option>
+          </select>
+          <p class="field-error" id="tarFormMuni-err" hidden></p>
+        </div>
+
+        <fieldset class="tar-fieldset" id="tarFieldsMaint" disabled>
+          <legend><span class="tariff-num">1</span><span data-i18n="tarG1">Tarifë vjetore për mirëmbajtje</span></legend>
+          <div class="tar-grid">
+            <div class="field">
+              <label for="tarUjitja" data-i18n="tarG1a">Ujitja</label>
+              <div class="input-wrap input-unit">
+                <input id="tarUjitja" name="tarUjitja" type="number" inputmode="decimal" min="0" step="any" placeholder="0" aria-describedby="tarUjitja-err">
+                <span class="unit" aria-hidden="true" data-i18n="tarUnit">Lekë/dynym</span>
+              </div>
+              <p class="field-error" id="tarUjitja-err" hidden></p>
+            </div>
+            <div class="field">
+              <label for="tarKullimi" data-i18n="tarG1b">Kullimi</label>
+              <div class="input-wrap input-unit">
+                <input id="tarKullimi" name="tarKullimi" type="number" inputmode="decimal" min="0" step="any" placeholder="0" aria-describedby="tarKullimi-err">
+                <span class="unit" aria-hidden="true" data-i18n="tarUnit">Lekë/dynym</span>
+              </div>
+              <p class="field-error" id="tarKullimi-err" hidden></p>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="tar-fieldset" id="tarFieldsService" disabled>
+          <legend><span class="tariff-num">2</span><span data-i18n="tarG2">Tarifë shërbimi ujitje</span></legend>
+          <div class="tar-grid tar-grid-3">
+            <div class="field">
+              <label for="tarKanalHapur" data-i18n="tarG2a">Me kanal i hapur me rrjedhje të lirë</label>
+              <div class="input-wrap input-unit">
+                <input id="tarKanalHapur" name="tarKanalHapur" type="number" inputmode="decimal" min="0" step="any" placeholder="0" aria-describedby="tarKanalHapur-err">
+                <span class="unit" aria-hidden="true" data-i18n="tarUnit">Lekë/dynym</span>
+              </div>
+              <p class="field-error" id="tarKanalHapur-err" hidden></p>
+            </div>
+            <div class="field">
+              <label for="tarSistemMbyllur" data-i18n="tarG2b">Me sistem të mbyllur, tubacione</label>
+              <div class="input-wrap input-unit">
+                <input id="tarSistemMbyllur" name="tarSistemMbyllur" type="number" inputmode="decimal" min="0" step="any" placeholder="0" aria-describedby="tarSistemMbyllur-err">
+                <span class="unit" aria-hidden="true" data-i18n="tarUnit">Lekë/dynym</span>
+              </div>
+              <p class="field-error" id="tarSistemMbyllur-err" hidden></p>
+            </div>
+            <div class="field">
+              <label for="tarPompaPrivate" data-i18n="tarG2c">Me pompa private individuale</label>
+              <div class="input-wrap input-unit">
+                <input id="tarPompaPrivate" name="tarPompaPrivate" type="number" inputmode="decimal" min="0" step="any" placeholder="0" aria-describedby="tarPompaPrivate-err">
+                <span class="unit" aria-hidden="true" data-i18n="tarUnit">Lekë/dynym</span>
+              </div>
+              <p class="field-error" id="tarPompaPrivate-err" hidden></p>
+            </div>
+          </div>
+        </fieldset>
+
+        <p class="field-hint tar-lock-hint" id="tarLockHint" data-i18n="frmLockHint">Zgjidhni një bashki për të plotësuar tarifat.</p>
+
+        <div class="tar-form-actions">
+          <button class="btn btn-primary" type="submit" data-i18n="frmSave">Ruaj tarifat</button>
+          <button class="btn btn-secondary" type="reset" data-i18n="frmReset">Pastro</button>
+          <p class="tar-form-status" id="tarFormStatus" role="status" aria-live="polite" hidden></p>
+        </div>
+      </form>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+
+    <div class="footer-org">
+      <p class="footer-parent" data-i18n="footParent">Ministria e Bujqësisë dhe Zhvillimit Rural</p>
+      <p class="footer-name" data-i18n="footName">Sistemi i Menaxhimit të Ujitjes dhe Kullimit</p>
+      <p class="footer-note" data-i18n="footBlurb">Ngritur në zbatim të legjislacionit për ujitjen dhe kullimin e tokave bujqësore.</p>
+    </div>
+
+    <nav class="footer-col" aria-label="Shërbime">
+      <h2 class="footer-head" data-i18n="footC1">Shërbime</h2>
+      <ul>
+        <li><a href="https://idmis.gis.al/public/map" target="_blank" rel="noopener" data-i18n="navMap">Harta publike</a></li>
+        <li><a href="Login.html" data-i18n="navLogin">Hyr</a></li>
+        <li><a href="Register.html" data-i18n="navRegister">Regjistrohu</a></li>
+      </ul>
+    </nav>
+
+    <nav class="footer-col" aria-label="Informacion institucional">
+      <h2 class="footer-head" data-i18n="footC3">Institucioni</h2>
+      <ul>
+        <li><a href="#" data-i18n="footLaw">Baza ligjore</a></li>
+        <li><a href="#" data-i18n="footTransparency">Programi i transparencës</a></li>
+        <li><a href="https://idmis.gis.al/Home/Privacy" target="_blank" rel="noopener" data-i18n="footPrivacy">Politika e privatësisë</a></li>
+      </ul>
+    </nav>
+
+    <div class="footer-col">
+      <h2 class="footer-head" data-i18n="footC2">Kontakt</h2>
+      <address class="footer-contact">
+        <span class="contact-row">
+          <span class="contact-label" data-i18n="footLblPhone">Tel</span>
+          <a href="tel:+35540000000">+355 4 000 0000</a>
+        </span>
+        <span class="contact-row">
+          <span class="contact-label" data-i18n="footLblEmail">Email</span>
+          <a href="mailto:info@idms.al">info@idms.al</a>
+        </span>
+        <span class="contact-row">
+          <span class="contact-label" data-i18n="footLblAddr">Adresa</span>
+          <span data-i18n="footAddr">Tiranë, Shqipëri</span>
+        </span>
+      </address>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <small data-i18n="footRights">Përmbajtja është informacion publik.</small>
+      <small>© <span id="year"></span> IDMIS</small>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" type="button" data-i18n-title="toTop" title="Kthehu lart" hidden>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5"/><path d="M5 12l7-7 7 7"/>
+  </svg>
+  <span class="sr-only" data-i18n="toTop">Kthehu lart</span>
+</button>
+
+<script src="../js/tarifat-bashki.js?v=1"></script>
+<script src="../js/main.js?v=103"></script>
+</body>
+</html>
