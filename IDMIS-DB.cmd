@@ -49,7 +49,17 @@ if errorlevel 1 (
 )
 
 set "PGPASSFILE=%PASSFILE%"
+chcp 1252 >nul
 echo Duke u lidhur me %DB_NAME% ne %DB_HOST%:%DB_PORT% si %DB_USER% ...
+if "%~1"=="" (
+  echo.
+  echo Databaza hapet me komanda. Shkruani pas idmis=# dhe shtypni Enter:
+  echo   \dt                                    lista e tabelave
+  echo   SELECT * FROM skema_ujitese LIMIT 10;   10 skemat e para
+  echo   SELECT emri FROM bashkia;               bashkite
+  echo   \q                                     dalje
+  echo.
+)
 "%PSQL%" -w -h %DB_HOST% -p %DB_PORT% -U %DB_USER% -d %DB_NAME% %*
 if errorlevel 2 (
   echo.
