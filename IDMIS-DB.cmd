@@ -1,71 +1,112 @@
+<# :
 @echo off
-setlocal EnableExtensions EnableDelayedExpansion
-title IDMIS - databaza
+set "IDMIS_ARG=%~1"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ([IO.File]::ReadAllText('%~f0'))"
+exit /b
+#>
+$ErrorActionPreference = 'Stop'
+$Host.UI.RawUI.WindowTitle = 'IDMIS - databaza'
 
-set "DB_HOST=192.168.1.50"
-set "DB_PORT=5433"
-set "DB_NAME=idmis"
-set "DB_USER=idmis_admin"
+$DbHost = '192.168.1.50'
+$DbPort = 5433
+$DbName = 'idmis'
+$DbUser = 'idmis_admin'
 
-set "PSQL="
-for %%v in (18 17 16 15 14 13) do (
-  if not defined PSQL if exist "%ProgramFiles%\PostgreSQL\%%v\bin\psql.exe" set "PSQL=%ProgramFiles%\PostgreSQL\%%v\bin\psql.exe"
-)
-if not defined PSQL for /f "delims=" %%p in ('where psql 2^>nul') do if not defined PSQL set "PSQL=%%p"
-if not defined PSQL (
-  echo PostgreSQL ^(psql^) nuk u gjet ne kete kompjuter.
-  echo Instaloni PostgreSQL nga https://www.postgresql.org/download/windows/ dhe provoni perseri.
-  pause
-  exit /b 1
-)
+function Fund([string]$msg) {
+  Write-Host ''
+  Write-Host $msg -ForegroundColor Yellow
+  Read-Host 'Shtypni Enter per te mbyllur' | Out-Null
+  exit 1
+}
 
-set "PASSDIR=%APPDATA%\postgresql"
-set "PASSFILE=%PASSDIR%\pgpass.conf"
-set "KEY=%DB_HOST%:%DB_PORT%:%DB_NAME%:%DB_USER%:"
+$passDir = Join-Path $env:APPDATA 'postgresql'
+$passFile = Join-Path $passDir 'pgpass.conf'
+$marker = Join-Path $passDir ("idmis-pgadmin-$DbHost-$DbPort.ok")
+$key = "${DbHost}:${DbPort}:*:${DbUser}:"
+$keyOld = "${DbHost}:${DbPort}:${DbName}:${DbUser}:"
+$arg = "$env:IDMIS_ARG".ToLower()
 
-if /i "%~1"=="/reset" (
-  if exist "%PASSFILE%" (
-    findstr /v /b /c:"%KEY%" "%PASSFILE%" > "%PASSFILE%.tmp"
-    move /y "%PASSFILE%.tmp" "%PASSFILE%" >nul
-  )
-  echo Fjalekalimi i ruajtur per %DB_USER% u fshi. Nisni perseri IDMIS-DB.cmd.
-  pause
-  exit /b 0
-)
+$lines = @()
+if (Test-Path $passFile) { $lines = @(Get-Content -LiteralPath $passFile) }
 
-findstr /b /c:"%KEY%" "%PASSFILE%" >nul 2>&1
-if errorlevel 1 (
-  echo Fjalekalimi per %DB_USER% ruhet nje here ne kete kompjuter.
-  set "PW="
-  for /f "usebackq delims=" %%p in (`powershell -NoProfile -Command "$s = Read-Host 'Fjalekalimi' -AsSecureString; [Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($s))"`) do set "PW=%%p"
-  if not defined PW (
-    echo Nuk u dha fjalekalim.
-    pause
-    exit /b 1
-  )
-  if not exist "%PASSDIR%" mkdir "%PASSDIR%"
-  >>"%PASSFILE%" echo %KEY%!PW!
-  set "PW="
-)
+if ($arg -eq '/reset') {
+  $lines | Where-Object { -not $_.StartsWith($key) -and -not $_.StartsWith($keyOld) } | Set-Content -LiteralPath $passFile -Encoding ascii
+  Remove-Item -LiteralPath $marker -ErrorAction SilentlyContinue
+  Write-Host "Fjalekalimi i ruajtur per $DbUser u fshi. Nisni perseri IDMIS-DB.cmd."
+  Read-Host 'Shtypni Enter per te mbyllur' | Out-Null
+  exit 0
+}
 
-set "PGPASSFILE=%PASSFILE%"
-chcp 1252 >nul
-echo Duke u lidhur me %DB_NAME% ne %DB_HOST%:%DB_PORT% si %DB_USER% ...
-if "%~1"=="" (
-  echo.
-  echo Databaza hapet me komanda. Shkruani pas idmis=# dhe shtypni Enter:
-  echo   \dt                                    lista e tabelave
-  echo   SELECT * FROM skema_ujitese LIMIT 10;   10 skemat e para
-  echo   SELECT emri FROM bashkia;               bashkite
-  echo   \q                                     dalje
-  echo.
-)
-"%PSQL%" -w -h %DB_HOST% -p %DB_PORT% -U %DB_USER% -d %DB_NAME% %*
-if errorlevel 2 (
-  echo.
-  echo Lidhja nuk u realizua. Kontrolloni:
-  echo  - ky kompjuter dhe kompjuteri me databazen jane ne te njejtin Wi-Fi
-  echo  - adresa %DB_HOST% eshte ende e sakte
-  echo  - nese fjalekalimi ishte gabim: IDMIS-DB.cmd /reset
-)
-pause
+$have = $lines | Where-Object { $_.StartsWith($key) } | Select-Object -First 1
+if (-not $have) {
+  $old = $lines | Where-Object { $_.StartsWith($keyOld) } | Select-Object -First 1
+  if ($old) {
+    $pw = $old.Substring($keyOld.Length)
+  } else {
+    Write-Host "Fjalekalimi per $DbUser ruhet nje here ne kete kompjuter."
+    $sec = Read-Host 'Fjalekalimi' -AsSecureString
+    $pw = [Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($sec))
+    if (-not $pw) { Fund 'Nuk u dha fjalekalim.' }
+  }
+  if (-not (Test-Path $passDir)) { New-Item -ItemType Directory -Path $passDir | Out-Null }
+  Add-Content -LiteralPath $passFile -Value ($key + $pw) -Encoding ascii
+  $pw = $null
+}
+
+$tcp = New-Object Net.Sockets.TcpClient
+$reach = $false
+try { $reach = $tcp.ConnectAsync($DbHost, $DbPort).Wait(3000) -and $tcp.Connected } catch { $reach = $false } finally { $tcp.Close() }
+if (-not $reach) {
+  Write-Host "Kujdes: databaza ne $DbHost`:$DbPort nuk po pergjigjet." -ForegroundColor Yellow
+  Write-Host ' - kompjuteri me databazen duhet te jete ndezur dhe ne te njejtin Wi-Fi'
+  Write-Host " - adresa $DbHost duhet te jete ende e sakte"
+}
+
+if ($arg -eq '/psql') {
+  $psql = @(Get-ChildItem "$env:ProgramFiles\PostgreSQL\*\bin\psql.exe" -ErrorAction SilentlyContinue | Sort-Object FullName -Descending) | Select-Object -First 1
+  if (-not $psql) { Fund 'psql nuk u gjet. Instaloni PostgreSQL.' }
+  $env:PGPASSFILE = $passFile
+  & $psql.FullName -w -h $DbHost -p $DbPort -U $DbUser -d $DbName
+  exit $LASTEXITCODE
+}
+
+$roots = @(
+  "$env:ProgramFiles\pgAdmin 4",
+  "${env:ProgramFiles(x86)}\pgAdmin 4",
+  "$env:LOCALAPPDATA\Programs\pgAdmin 4"
+) + @(Get-ChildItem "$env:ProgramFiles\PostgreSQL\*\pgAdmin 4" -Directory -ErrorAction SilentlyContinue | Sort-Object FullName -Descending | ForEach-Object { $_.FullName })
+$pga = $roots | Where-Object { $_ -and (Test-Path (Join-Path $_ 'runtime\pgAdmin4.exe')) } | Select-Object -First 1
+if (-not $pga) { Fund 'pgAdmin 4 nuk u gjet ne kete kompjuter. Shkarkojeni nga https://www.pgadmin.org/download/ dhe nisni perseri IDMIS-DB.cmd.' }
+$exe = Join-Path $pga 'runtime\pgAdmin4.exe'
+
+if (-not (Test-Path $marker)) {
+  Write-Host 'IDMIS po shtohet ne pgAdmin (vetem heren e pare) ...'
+  $running = @(Get-Process -Name pgAdmin4 -ErrorAction SilentlyContinue)
+  if ($running.Count -and $arg -ne '/vetem-regjistro') {
+    $running | ForEach-Object { if ($_.MainWindowHandle -ne 0) { $null = $_.CloseMainWindow() } }
+    Start-Sleep -Seconds 3
+    Get-Process -Name pgAdmin4 -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+  }
+  $json = Join-Path $env:TEMP 'idmis-pgadmin-server.json'
+  $servers = @{ Servers = @{ '1' = [ordered]@{
+    Name = "IDMIS ($DbHost)"; Group = 'Servers'; Host = $DbHost; Port = $DbPort
+    MaintenanceDB = $DbName; Username = $DbUser
+    Comment = 'IDMIS - hapet me fjalekalimin e ruajtur nga IDMIS-DB.cmd'
+    ConnectionParameters = [ordered]@{ sslmode = 'prefer'; connect_timeout = 10; passfile = $passFile }
+  } } }
+  [IO.File]::WriteAllText($json, ($servers | ConvertTo-Json -Depth 5))
+  $py = Join-Path $pga 'python\python.exe'
+  $setup = Join-Path $pga 'web\setup.py'
+  if (-not (Test-Path (Join-Path $env:APPDATA 'pgAdmin\pgadmin4.db'))) { & $py $setup setup-db 2>&1 | Out-Null }
+  $out = & $py $setup load-servers $json 2>&1 | Out-String
+  Remove-Item -LiteralPath $json -ErrorAction SilentlyContinue
+  if ($LASTEXITCODE -ne 0 -or $out -notmatch 'Added') { Fund ("Serveri nuk u shtua ne pgAdmin:`n" + $out) }
+  New-Item -ItemType File -Path $marker -Force | Out-Null
+}
+
+if ($arg -eq '/vetem-regjistro') { Write-Host 'IDMIS eshte ne pgAdmin.'; exit 0 }
+
+Remove-Item Env:ELECTRON_RUN_AS_NODE -ErrorAction SilentlyContinue
+Start-Process -FilePath $exe -WorkingDirectory (Split-Path $exe)
+Write-Host "pgAdmin po hapet. Klikoni 'IDMIS ($DbHost)' te Servers, pastaj Databases > idmis > Schemas > public > Tables."
+Start-Sleep -Seconds 4
